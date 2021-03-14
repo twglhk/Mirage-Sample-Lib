@@ -43,25 +43,25 @@ namespace Mirage
         /// <summary>
         /// Event fires once a new Client has connect to the Room
         /// </summary>
-        public virtual void OnRoomServerConnected(INetworkConnection conn)
+        public virtual void OnRoomServerConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerConnected] {conn.Address}");
+            Debug.Log($"[OnRoomServerConnected] {conn.Identity.name}");
         }
 
         /// <summary>
         /// Event fires once a new Client has passed Authentication to the Room
         /// </summary>
-        public virtual void OnRoomServerAuthenticated(INetworkConnection conn)
+        public virtual void OnRoomServerAuthenticated(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerAuthenticated] {conn.Address}");
+            Debug.Log($"[OnRoomServerAuthenticated] {conn.Identity.name}");
         }
 
         /// <summary>
         /// Event fires once a Client has Disconnected from the Room.
         /// </summary>
-        public virtual void OnRoomServerDisConnected(INetworkConnection conn)
+        public virtual void OnRoomServerDisConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerDisConnected] {conn.Address}");
+            Debug.Log($"[OnRoomServerDisConnected] {conn.Identity.name}");
         }
 
         /// <summary>

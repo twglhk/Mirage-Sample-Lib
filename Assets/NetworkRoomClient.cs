@@ -25,17 +25,17 @@ namespace Mirage
         /// <summary>
         /// Event fires once the Client has connected its Server(Room).
         /// </summary>
-        public virtual void OnRoomClientConnected(INetworkConnection conn)
+        public virtual void OnRoomClientConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomClientConnected] {conn.Address}");
+            Debug.Log($"[OnRoomClientConnected] {conn.Identity.name}");
         }
 
         /// <summary>
         /// Event fires after the Client connection has sucessfully been authenticated with its Server(Room).
         /// </summary>
-        public virtual void OnRoomClientAuthenticated(INetworkConnection conn)
+        public virtual void OnRoomClientAuthenticated(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomClientAuthenticated] {conn.Address}");
+            Debug.Log($"[OnRoomClientAuthenticated] {conn.Identity.name}");
         }
 
         /// <summary>
