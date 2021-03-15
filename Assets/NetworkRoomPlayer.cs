@@ -25,6 +25,10 @@ namespace Mirage
 
             ServerRequestSettingCharacter();
             //ServerRequestSettingCharacter(0, NetIdentity);
+
+            //NetIdentity.ClientObjectManager.RegisterPrefab(testPrefab.GetComponent<NetworkIdentity>());
+
+            Debug.Log("[Spawn!]");
         }
 
         [ServerRpc]

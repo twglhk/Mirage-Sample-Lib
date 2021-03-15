@@ -9,16 +9,14 @@ namespace Mirage
     {
         static readonly ILogger logger = LogFactory.GetLogger(typeof(NetworkRoomClient));
 
-        [FormerlySerializedAs("m_RoomPlayerPrefab")]
-        [SerializeField]
-        [Tooltip("Prefab to use for the Room Player")]
-        public NetworkRoomPlayer roomPlayerPrefab;
+        public NetworkManager _networkManager;
 
         private void Awake()
         {
             Connected.AddListener(OnRoomClientConnected);
             Authenticated.AddListener(OnRoomClientAuthenticated);
             Disconnected.AddListener(OnRoomClientDisConnected);
+            _networkManager.SceneManager.ClientChangeScene.AddListener((str, load) => { Debug.Log("[Client Scene Changed!]"); });
         }
 
         #region room client virtual
@@ -27,7 +25,7 @@ namespace Mirage
         /// </summary>
         public virtual void OnRoomClientConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomClientConnected] {conn.Identity.name}");
+            Debug.Log($"[OnRoomClientConnected]");
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace Mirage
         /// </summary>
         public virtual void OnRoomClientAuthenticated(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomClientAuthenticated] {conn.Identity.name}");
+            Debug.Log($"[OnRoomClientAuthenticated]");
         }
 
         /// <summary>

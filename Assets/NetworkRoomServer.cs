@@ -45,7 +45,7 @@ namespace Mirage
         /// </summary>
         public virtual void OnRoomServerConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerConnected] {conn.Identity.name}");
+            Debug.Log($"[OnRoomServerConnected]");
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Mirage
         /// </summary>
         public virtual void OnRoomServerAuthenticated(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerAuthenticated] {conn.Identity.name}");
+            Debug.Log($"[OnRoomServerAuthenticated]");
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Mirage
         /// </summary>
         public virtual void OnRoomServerDisConnected(INetworkPlayer conn)
         {
-            Debug.Log($"[OnRoomServerDisConnected] {conn.Identity.name}");
+            Debug.Log($"[OnRoomServerDisConnected]");
         }
 
         /// <summary>
