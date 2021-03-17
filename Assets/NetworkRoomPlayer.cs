@@ -9,6 +9,7 @@ namespace Mirage
         static readonly ILogger logger = LogFactory.GetLogger(typeof(NetworkRoomPlayer));
 
         public GameObject testPrefab;
+        public bool IsJump = false;
 
         private void Awake()
         {
@@ -29,6 +30,33 @@ namespace Mirage
             //NetIdentity.ClientObjectManager.RegisterPrefab(testPrefab.GetComponent<NetworkIdentity>());
 
             Debug.Log("[Spawn!]");
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (IsClient)
+                {
+                    Debug.Log("SPACE!!");
+                    ServerRpcJump();
+                }
+            }
+
+            if (IsJump)
+            {
+                if (IsServer)
+                {
+                    transform.position += new Vector3(0f, 1f, 0f);
+                    IsJump = false;
+                }
+            }
+        }
+
+        [ServerRpc]
+        protected virtual void ServerRpcJump()
+        {
+            IsJump = true;
         }
 
         [ServerRpc]
