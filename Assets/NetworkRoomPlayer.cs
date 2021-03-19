@@ -1,3 +1,4 @@
+using Mirage.Logging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Mirage
 
         private void Awake()
         {
+            DontDestroyOnLoad(this.gameObject);
+
             NetIdentity.OnStartAuthority.AddListener(Spawn);
 
             Debug.Log("AWAKE!");
@@ -24,7 +27,7 @@ namespace Mirage
 
             //Debug.Log($"[identity] {identity.name} {identity.NetId}");
 
-            ServerRequestSettingCharacter();
+            ServerRequestSettingCharacter(NetIdentity);
             //ServerRequestSettingCharacter(0, NetIdentity);
 
             //NetIdentity.ClientObjectManager.RegisterPrefab(testPrefab.GetComponent<NetworkIdentity>());
@@ -39,7 +42,8 @@ namespace Mirage
                 if (IsClient)
                 {
                     Debug.Log("SPACE!!");
-                    ServerRpcJump();
+                    transform.position += new Vector3(0f, 1f, 0f);
+                    //ServerRpcJump();
                 }
             }
 
@@ -60,13 +64,13 @@ namespace Mirage
         }
 
         [ServerRpc]
-        private void ServerRequestSettingCharacter()
+        private void ServerRequestSettingCharacter(NetworkIdentity owner)
         {
             // TO DO : 캐릭터의 정보도 추가로 받아서 스폰 후 초기화
             //Debug.Log($"[Spawn Prefabs] {selected.name}");
 
-            var characterObj = GameObject.Instantiate(testPrefab, new Vector3(1f, 0f, 0f), default);
-            NetIdentity.ServerObjectManager.Spawn(characterObj, gameObject);
+            var characterObj = GameObject.Instantiate(Resources.Load("Spawnable", typeof(GameObject))) as GameObject;
+            NetIdentity.ServerObjectManager.Spawn(characterObj, owner.ConnectionToClient);
             
             Debug.Log($"[ServerRequestSettingCharacter] {NetIdentity.NetId}");
 
