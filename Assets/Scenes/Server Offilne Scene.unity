@@ -124,6 +124,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &32217112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32217113}
+  - component: {fileID: 32217115}
+  - component: {fileID: 32217114}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &32217113
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32217112}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1267592292}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &32217114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32217112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Change Scene
+--- !u!222 &32217115
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32217112}
+  m_CullTransparentMesh: 1
 --- !u!1 &102310925
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +588,7 @@ RectTransform:
   m_Children:
   - {fileID: 1175510552}
   - {fileID: 683730857}
+  - {fileID: 1267592292}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,8 +626,8 @@ GameObject:
   - component: {fileID: 464139701}
   - component: {fileID: 464139709}
   - component: {fileID: 464139704}
-  - component: {fileID: 464139700}
   - component: {fileID: 464139698}
+  - component: {fileID: 464139706}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -568,23 +648,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - Name: Multi_CharacterController
-    level: 3
-  - Name: RemoteCallHelper
+  - Name: ClientObjectManager
     level: 2
-  - Name: CharacterControllerBase
-    level: 2
-  - Name: NetworkBehaviour
-    level: 2
-  - Name: NetworkIdentity
-    level: 2
-  - Name: ZooportsPlayerSpawner
-    level: 3
   - Name: NetworkRoomClient
     level: 2
   - Name: NetworkClient
     level: 2
   - Name: NetworkTime
+    level: 2
+  - Name: NetworkRoomPlayer
+    level: 2
+  - Name: RemoteCallHelper
+    level: 2
+  - Name: NetworkBehaviour
+    level: 2
+  - Name: NetworkIdentity
+    level: 2
+  - Name: NetworkSceneManager
     level: 2
   - Name: ServerObjectManager
     level: 2
@@ -594,15 +674,19 @@ MonoBehaviour:
     level: 2
   - Name: CharacterSpawner
     level: 2
-  - Name: NetworkRoomPlayer
+  - Name: NetworkSpawnableSub
+    level: 3
+  - Name: NetworkSpawnable
+    level: 3
+  - Name: Multi_CharacterController
+    level: 3
+  - Name: CharacterControllerBase
     level: 2
-  - Name: NetworkSceneManager
-    level: 2
-  - Name: ClientObjectManager
+  - Name: ZooportsPlayerSpawner
+    level: 3
+  - Name: MatchingServerManager
     level: 2
   - Name: NetworkBehaviourInspector
-    level: 2
-  - Name: MatchingServerManager
     level: 2
   - Name: ZooportsPlayer
     level: 2
@@ -626,10 +710,6 @@ MonoBehaviour:
     level: 2
   - Name: NetworkPlayer
     level: 2
-  - Name: NetworkSpawnableSub
-    level: 3
-  - Name: NetworkSpawnable
-    level: 3
 --- !u!114 &464139699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,29 +730,6 @@ MonoBehaviour:
   SendWindowSize: 32
   ReceiveWindowSize: 8192
   delayMode: 3
---- !u!114 &464139700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464139697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7aaac73a16c040fd871cb977b5c557b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Client: {fileID: 464139704}
-  Server: {fileID: 464139709}
-  SceneManager: {fileID: 464139703}
-  ClientObjectManager: {fileID: 464139701}
-  ServerObjectManager: {fileID: 464139702}
-  PlayerPrefab: {fileID: 7065625595319086622, guid: b5026d0c997720b4a99d46a1cb9a5e43,
-    type: 3}
-  AutoSpawn: 1
-  startPositionIndex: 0
-  startPositions: []
-  playerSpawnMethod: 0
 --- !u!114 &464139701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +840,24 @@ MonoBehaviour:
   SceneManager: {fileID: 464139703}
   ServerObjectManager: {fileID: 464139702}
   ClientObjectManager: {fileID: 464139701}
+--- !u!114 &464139706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464139697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae45f1840fa2d0499f0c0804f1f3dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Server: {fileID: 464139709}
+  Client: {fileID: 464139704}
+  SceneManager: {fileID: 464139703}
+  ServerObjectManager: {fileID: 464139702}
+  ClientObjectManager: {fileID: 464139701}
+  gameScene: Assets/Scenes/Game Scene.unity
 --- !u!4 &464139707
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,6 +1896,139 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576934537b9bdbc4f9409dbde730a0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1267592291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267592292}
+  - component: {fileID: 1267592295}
+  - component: {fileID: 1267592294}
+  - component: {fileID: 1267592293}
+  m_Layer: 5
+  m_Name: Button_Change Scene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1267592292
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267592291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 32217113}
+  m_Father: {fileID: 461836835}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 664.8452, y: -399}
+  m_SizeDelta: {x: 395.6766, y: 73.2301}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1267592293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267592291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1267592294}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 464139706}
+        m_TargetAssemblyTypeName: Mirage.NetworkRoomManager, Assembly-CSharp
+        m_MethodName: SceneLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1267592294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267592291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1267592295
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267592291}
+  m_CullTransparentMesh: 1
 --- !u!1 &1501149874
 GameObject:
   m_ObjectHideFlags: 0

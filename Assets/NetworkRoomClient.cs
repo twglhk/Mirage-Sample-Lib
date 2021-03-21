@@ -17,7 +17,7 @@ namespace Mirage
             Connected.AddListener(OnRoomClientConnected);
             Authenticated.AddListener(OnRoomClientAuthenticated);
             Disconnected.AddListener(OnRoomClientDisConnected);
-            _networkManager.SceneManager.ClientChangeScene.AddListener((str, load) => { Debug.Log("[Client Scene Changed!]"); });
+            //_networkManager.SceneManager.ClientChangeScene.AddListener((str, load) => { Debug.Log("[Client Scene Changed!]"); });
         }
 
         #region room client virtual
