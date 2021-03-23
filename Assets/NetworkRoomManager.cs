@@ -35,6 +35,7 @@ namespace Mirage
             Server.Authenticated.AddListener(OnServerAuthenticated);
             Server.Connected.AddListener(OnServerConnected);
             Server.Disconnected.AddListener(OnServerDisconnected);
+            Client.Authenticated.AddListener(OnClientAuthenticated);
         }
 
         private void Update()
@@ -70,6 +71,7 @@ namespace Mirage
         private void OnServerAuthenticated(INetworkPlayer player)
         {
             player.RegisterHandler<AddCharacterMessage>(OnServerAddPlayerInternal);
+            player.RegisterHandler<CustomMessage>(OnServerHandleCustomMessage);
         }
 
         /// <summary>
@@ -95,12 +97,17 @@ namespace Mirage
             //Instantiation
             //ServerObjectManager.AddCharacter(player, character.gameObject);
         }
+
+        public void OnServerHandleCustomMessage(INetworkPlayer player, CustomMessage msg)
+        {
+            Debug.Log($"[Server][OnServerHandleCustomMessage] {msg.id}");
+        }
         #endregion
 
         #region Client
         public void ClientRequestAddPlayer()
         {
-            Client.Send(new AddCharacterMessage());
+            //Client.Send(new AddCharacterMessage());
         }
 
         public void ClientRegisterPrefab()
@@ -110,6 +117,11 @@ namespace Mirage
 
             // Case 2. Register prefab to ClientObjectManager->Prefaps on inspector
         }
+
+        public void OnClientAuthenticated(INetworkPlayer networkPlayer)
+        { 
+            Client.Send(new CustomMessage { id = 3 });
+        }
         #endregion
 
         /// <summary>
@@ -117,5 +129,11 @@ namespace Mirage
         /// <para>This is set True in StartServer / StartClient, and set False in StopServer / StopClient</para>
         /// </summary>
         public bool IsNetworkActive => Server.Active || Client.Active;
+    }
+
+    [NetworkMessage]
+    public struct CustomMessage
+    {
+        public int id;
     }
 }
