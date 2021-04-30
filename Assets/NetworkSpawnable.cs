@@ -14,7 +14,7 @@ public abstract class NetworkSpawnable : NetworkBehaviour
     private void Awake()
     {
         Debug.Log($"[NetworkIdentity] {NetIdentity.NetId}");
-        NetIdentity.OnStartAuthority.AddListener(OnClinetStartAuthority);
+        NetIdentity.OnAuthorityChanged.AddListener(OnClinetStartAuthority);
     }
 
     private void Start()
@@ -28,7 +28,7 @@ public abstract class NetworkSpawnable : NetworkBehaviour
         Debug.Log($"[SyncValue] {syncvalue}");
     }
 
-    public virtual void OnClinetStartAuthority()
+    public virtual void OnClinetStartAuthority(bool b)
     {
         logger.Log("[Client] OnClinetStartAuthority()");
     }

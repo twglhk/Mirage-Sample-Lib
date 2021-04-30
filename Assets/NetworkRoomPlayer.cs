@@ -25,7 +25,7 @@ namespace Mirage
             // 네트워크 매니저 캐싱
             _networkManager = FindObjectOfType<NetworkManager>().GetComponent<NetworkManager>();
 
-            _networkManager.SceneManager.ClientChangeScene.AddListener(OnClientSceneChange);
+            _networkManager.NetworkSceneManager.ClientChangeScene.AddListener(OnClientSceneChange);
             //NetIdentity.OnStartAuthority.AddListener(Spawn);
 
             Debug.Log("AWAKE!");
