@@ -8,6 +8,13 @@ using Mirage;
 
 namespace Game.Event
 {
+    public enum EventListenerType
+    {
+        Server,
+        Client,
+        Local
+    }
+
     public class MirageNetworkEventListener : MonoBehaviour
     {
         [Header("Event Setting")]
